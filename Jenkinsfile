@@ -55,7 +55,9 @@ pipeline {
 
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 
-                sh 'terraform apply --auto-approve'
+                sh """
+                cd dev
+                terraform apply --auto-approve"""
 
                 }
 
