@@ -10,16 +10,6 @@ pipeline {
              }
      }
      
-    stage('Build') {
-      steps {
-        sh """
-          cd Backend
-          npm install
-          npm ci
-        """
-      }
-    }
-
     stage("set env variabl"){
 
             steps{
