@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Git Checkout') {
       steps {
-      git credentialsId: 'trinity-token', branch: 'ci/cd', url: 'https://github.com/triconinfotech/TriNity.git'
+      git branch: 'master', url: 'https://github.com/thejaswitricon/terraform_demo.git'
              }
      }
      
