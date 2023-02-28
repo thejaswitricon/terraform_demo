@@ -57,13 +57,28 @@ pipeline {
 
                 sh """
                 cd dev
-                terraform destroy --auto-approve"""
+                terraform apply --auto-approve"""
 
                 }
-
             }
-
       }  
-  }
+
+      stage ("DEV approval Destroy") {
+        steps {
+           echo "Taking approval from DEV Manager for QA Deployment"
+           timeout(time: 7, unit: 'DAYS') {
+           input message: 'Do you want to Destroy the Infra', submitter: 'admin'
+           }
+        }
+    }
+   // Destroy stage
+      stage ("Terraform Destroy") {
+         steps {
+            sh 'terraform -chdir="./v.14/test_env" destroy -var-file="stage.tfvars" --auto-approve'
+            // sh 'terraform -chdir="./v.14/test_env" destroy --auto-approve'
+        }
+     }
 }
+  }
+
 
