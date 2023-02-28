@@ -74,7 +74,10 @@ pipeline {
    // Destroy stage
       stage ("Terraform Destroy") {
          steps {
-            sh 'terraform -chdir="../dev" destroy  --auto-approve'
+            sh """
+            cd dev
+            terraform destroy --auto-approve
+            """
             // sh 'terraform -chdir="./v.14/test_env" destroy --auto-approve'
         }
      }
