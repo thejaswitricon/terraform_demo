@@ -74,7 +74,6 @@ pipeline {
    // Destroy stage
       stage ("Terraform Destroy") {
          steps {
-            steps{
 
                 withCredentials([[
 
